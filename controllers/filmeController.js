@@ -19,6 +19,19 @@ export async function createFilme(req, res) {
   }
 }
 
+// Buscar por ID
+export async function getFilmeById(req, res) {
+  try {
+    const filme = await Filme.findById(req.params.id).populate('diretor', 'nome');
+    if (!filme) return res.status(404).json({ error: 'Filme não encontrado.' });
+
+    res.status(200).json(filme);
+  } catch (err) {
+    console.error("Erro ao buscar filme:", err);
+    res.status(400).json({ error: 'ID inválido ou erro ao buscar filme.' });
+  }
+}
+
 // Listar todos os filmes
 export async function getFilme(req, res) {
   try {
@@ -67,23 +80,3 @@ export async function deleteFilme(req, res) {
     res.status(400).json({ error: 'Erro ao excluir filme. Verifique o ID.' });
   }
 }
-
-
-
-
-
-
-
-
-// // Buscar por ID
-// exports.getFilmeById = async (req, res) => {
-//   try {
-//     const filme = await Filme.findById(req.params.id).populate('diretor', 'nome');
-//     if (!filme) return res.status(404).json({ error: 'Filme não encontrado.' });
-
-//     res.status(200).json(filme);
-//   } catch (err) {
-//     console.error("Erro ao buscar filme:", err);
-//     res.status(400).json({ error: 'ID inválido ou erro ao buscar filme.' });
-//   }
-// };
