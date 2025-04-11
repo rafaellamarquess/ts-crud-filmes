@@ -1,0 +1,9 @@
+# Node (para front e/ou back se for Node)
+node_modules/
+.env
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
