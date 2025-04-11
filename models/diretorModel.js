@@ -5,4 +5,4 @@ const diretorSchema = new Schema({
   nome: { type: String, required: true }
 });
 
-export default model('Diretor', diretorSchema); 
+export default model('Director', diretorSchema); 

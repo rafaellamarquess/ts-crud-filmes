@@ -1,7 +1,7 @@
-const Filme = require('../models/filmeModel');
+import Filme from '../models/filmeModel.js';
 
 // Criar filme
-exports.createFilme = async (req, res) => {
+export async function createFilme(req, res) {
   try {
     const { nome, sinopse, anoLancamento, diretor } = req.body;
 
@@ -17,10 +17,10 @@ exports.createFilme = async (req, res) => {
     console.error("Erro ao criar filme:", err);
     res.status(500).json({ error: 'Erro ao criar filme. Verifique os dados enviados.' });
   }
-};
+}
 
 // Listar todos os filmes
-exports.getFilme = async (req, res) => {
+export async function getFilme(req, res) {
   try {
     const filmes = await Filme.find().populate('diretor', 'nome');
     res.status(200).json(filmes);
@@ -28,10 +28,10 @@ exports.getFilme = async (req, res) => {
     console.error("Erro ao listar filmes:", err);
     res.status(500).json({ error: 'Erro ao listar filmes.' });
   }
-};
+}
 
 // Atualizar filme
-exports.updateFilme = async (req, res) => {
+export async function updateFilme(req, res) {
   try {
     const { nome, sinopse, anoLancamento, diretor } = req.body;
 
@@ -52,10 +52,10 @@ exports.updateFilme = async (req, res) => {
     console.error("Erro ao atualizar filme:", err);
     res.status(400).json({ error: 'Erro ao atualizar filme. Verifique os dados.' });
   }
-};
+}
 
 // Deletar filme
-exports.deleteFilme = async (req, res) => {
+export async function deleteFilme(req, res) {
   try {
     const deletedFilme = await Filme.findByIdAndDelete(req.params.id);
 
@@ -66,7 +66,7 @@ exports.deleteFilme = async (req, res) => {
     console.error("Erro ao deletar filme:", err);
     res.status(400).json({ error: 'Erro ao excluir filme. Verifique o ID.' });
   }
-};
+}
 
 
 

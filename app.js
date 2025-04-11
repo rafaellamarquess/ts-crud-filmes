@@ -1,8 +1,8 @@
 import express, { json } from 'express';
 import { connect } from 'mongoose';
 import cors from 'cors';
-import filmRoutes from './routes/filmRoutes';
-import directorsRoutes from './routes/directorsRoutes';
+import filmRoutes from './routes/filmRoutes.js';
+import directorsRoutes from './routes/directorsRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = 'mongodb://localhost:27017/filmesdb';

@@ -1,6 +1,6 @@
-const Director = require('../models/diretorModel');
+import Director from '../models/diretorModel.js';
 
-const createDirector = async (req, res) => {
+export const createDirector = async (req, res) => {
   try {
     const { nome } = req.body;
     const novoDiretor = new Director({ nome });
@@ -12,14 +12,14 @@ const createDirector = async (req, res) => {
   }
 };
 
-const getDirectors = async (req, res) => {
+export const getDirectors = async (req, res) => {
   try {
-    const diretores = await Director.find();
-    res.json(diretores);
+    const directors = await Director.find();
+    res.json(directors);
   } catch (error) {
     console.error('Erro ao buscar diretores:', error);
     res.status(500).json({ error: 'Erro ao buscar diretores' });
   }
 };
 
-module.exports = { getDirectors, createDirector };
+export default { getDirectors, createDirector };

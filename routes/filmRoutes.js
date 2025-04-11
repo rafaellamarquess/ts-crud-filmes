@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import { createFilme, getFilme, updateFilme, deleteFilme } from '../controllers/filmeController';
+import { createFilme, getFilme, updateFilme, deleteFilme } from '../controllers/filmeController.js';
 
 router.post('/addFilm', createFilme);
 router.get('/listFilm', getFilme);
